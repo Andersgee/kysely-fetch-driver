@@ -2,7 +2,7 @@
   "name": "@andersgee/kysely-fetch-driver",
   "author": "andersgee",
   "license": "MIT",
-  "version": "0.0.4",
+  "version": "1.0.1",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
   "types": "dist/index.d.ts",
