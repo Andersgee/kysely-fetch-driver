@@ -128,7 +128,7 @@ class FetchConnection implements DatabaseConnection {
     }
   }
 
-  async *streamQuery() {
+  async *streamQuery<R>(): AsyncIterableIterator<QueryResult<R>> {
     throw new Error("FetchConnection does not support streaming");
   }
 }
