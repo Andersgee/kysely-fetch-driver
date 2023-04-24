@@ -1,6 +1,10 @@
 # kysely-fetch-driver
 
+Edge compatible fech driver for kysely.
+
 This driver uses post requests with `fetch()` to a webserver that responds with the query result instead of querying the database directly.
+
+This is the same idea as the popular planetscale dialect but is not limited to planetscale or even mysql.
 
 ## install
 
@@ -32,8 +36,6 @@ const kysely = new Kysely<DB>({
 ### webserver
 
 You need to have a webserver located at `url` that handles the post requests for this driver to work.
-
-This is similar to how the popular planetscale dialect does it but here we are not limited to planetscale or even mysql.
 
 The webserver should handle requests like this:
 
