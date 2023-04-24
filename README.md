@@ -1,6 +1,6 @@
 # kysely-fetch-driver
 
-Edge compatible fech driver for kysely.
+Edge compatible fetch driver for kysely.
 
 This driver uses post requests with `fetch()` to a webserver that responds with the query result instead of querying the database directly.
 
