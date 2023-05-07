@@ -15,9 +15,11 @@ npm install @andersgee/kysely-fetch-driver
 ## usage
 
 ```ts
-import { MysqlAdapter, MysqlIntrospector, MysqlQueryCompiler } from "kysely";
+import { Kysely } from "kysely";
 import { FetchDriver } from "@andersgee/kysely-fetch-driver";
 import type { DB } from "./db";
+//your adapter of choice:
+import { MysqlAdapter, MysqlIntrospector, MysqlQueryCompiler } from "kysely";
 
 const kysely = new Kysely<DB>({
   dialect: {
