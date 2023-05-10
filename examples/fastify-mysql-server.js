@@ -3,8 +3,6 @@ import { createPool } from "mysql2";
 import { serialize, deserialize } from "superjson";
 import Fastify from "fastify";
 
-const fastify = Fastify({ logger: true });
-
 const kysely = new Kysely({
   dialect: new MysqlDialect({
     pool: createPool({
@@ -17,6 +15,8 @@ const kysely = new Kysely({
   }),
 });
 
+const fastify = Fastify();
+
 fastify.route({
   method: "POST",
   url: "/",
@@ -27,10 +27,7 @@ fastify.route({
   },
   handler: async (request, reply) => {
     const result = await kysely.executeQuery(deserialize(request.body));
-    reply
-      .code(200)
-      .header("Content-Type", "application/json; charset=utf-8")
-      .send(serialize(result));
+    reply.send(serialize(result));
   },
 });
 
