@@ -15,28 +15,31 @@ const kysely = new Kysely({
   }),
 });
 
-const fastify = Fastify();
+const AUTH_SECRET = "Basic SOMESECRET";
 
-fastify.route({
+const server = Fastify();
+
+server.addHook("onRequest", async (request) => {
+  if (request.headers.authorization !== AUTH_SECRET) {
+    throw { statusCode: 401, message: "Unauthorized" };
+  }
+});
+
+server.route({
   method: "POST",
   url: "/",
-  preHandler: async (request, reply) => {
-    if (request.headers.authorization !== "Basic SOMESECRET") {
-      reply.code(401).send("Unauthorized");
-    }
-  },
   handler: async (request, reply) => {
     const result = await kysely.executeQuery(deserialize(request.body));
-    reply.send(serialize(result));
+    return serialize(result);
   },
 });
 
-const start = async () => {
+async function start() {
   try {
-    await fastify.listen({ host: "0.0.0.0", port: 4000 });
+    await server.listen({ host: "0.0.0.0", port: 4000 });
   } catch (err) {
-    fastify.log.error(err);
+    server.log.error(err);
     process.exit(1);
   }
-};
+}
 start();
