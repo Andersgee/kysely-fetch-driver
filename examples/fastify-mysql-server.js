@@ -1,6 +1,6 @@
 import { Kysely, MysqlDialect } from "kysely";
 import { createPool } from "mysql2";
-import { serialize, deserialize } from "superjson";
+import superjson from "superjson";
 import Fastify from "fastify";
 
 const kysely = new Kysely({
@@ -29,8 +29,9 @@ server.route({
   method: "POST",
   url: "/",
   handler: async (request, reply) => {
-    const result = await kysely.executeQuery(deserialize(request.body));
-    return serialize(result);
+    const compiledQuery = superjson.deserialize(request.query.q);
+    const result = await kysely.executeQuery(compiledQuery);
+    return superjson.serialize(result);
   },
 });
 
