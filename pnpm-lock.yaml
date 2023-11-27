@@ -9,8 +9,8 @@ devDependencies:
     specifier: ^2.26.0
     version: 2.26.1
   kysely:
-    specifier: ^0.24.2
-    version: 0.24.2
+    specifier: ^0.26.3
+    version: 0.26.3
   tsup:
     specifier: ^6.5.0
     version: 6.7.0(typescript@4.9.5)
@@ -1488,8 +1488,8 @@ packages:
     engines: {node: '>=6'}
     dev: true
 
-  /kysely@0.24.2:
-    resolution: {integrity: sha512-+7eaTJNUYm2yRq1x+lEOZc+78TO35dTZ9b0dh49+Z9CTt2byMSbMiOKpwPlOyCAaHD4kILkAYWYZNywFlmBwRA==}
+  /kysely@0.26.3:
+    resolution: {integrity: sha512-yWSgGi9bY13b/W06DD2OCDDHQmq1kwTGYlQ4wpZkMOJqMGCstVCFIvxCCVG4KfY1/3G0MhDAcZsip/Lw8/vJWw==}
     engines: {node: '>=14.0.0'}
     dev: true
 
