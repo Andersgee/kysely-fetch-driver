@@ -26,7 +26,7 @@ server.addHook("onRequest", async (request) => {
 });
 
 server.route({
-  method: "POST",
+  method: "GET",
   url: "/",
   handler: async (request, reply) => {
     const compiledQuery = superjson.deserialize(request.query.q);
